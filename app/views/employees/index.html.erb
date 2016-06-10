@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<!-- Main container -->
+<div class="page-container">
+
+<!-- bloc-1 -->
+<div class="bloc bg-lake bloc-fill-screen bgc-white l-bloc" id="bloc-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="mg-md text-center tc-grey">
+              Staff Management Portal
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row voffset">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="text-center">
+              <%= form_tag import_employees_path, multipart: true do %>
+                <%= file_field_tag :file %>
+                <%= submit_tag "Upload", :class => "btn btn-l btn-french-blue"%>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="text-center">
+                <%= button_to "List All", listall_path, :class => "btn btn-l btn-french-blue", :method => :get %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- bloc-1 END -->
+
+</div>
+
+    
+<!-- Google Analytics -->
+ 
+<!-- Google Analytics END -->

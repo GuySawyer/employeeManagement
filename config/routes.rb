@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  root 'employees#index'
+
+  get 'employees/listall' => 'employees#listall', as: :listall
+
+  resources :employees do
+    collection { post :import }
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
