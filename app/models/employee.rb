@@ -1,4 +1,5 @@
 class Employee < ActiveRecord::Base
+	belongs_to :department
 
 	def self.import(file)
 	  CSV.foreach(file.path, headers: false) do |row|

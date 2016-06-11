@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :departments
   root 'employees#index'
 
   get 'employees/listall' => 'employees#listall', as: :listall
