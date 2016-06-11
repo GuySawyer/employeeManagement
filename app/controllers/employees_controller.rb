@@ -26,8 +26,14 @@ class EmployeesController < ApplicationController
   end
 
   def import
-    @employee = Employee.new
-    render :new
+    respond_to do |format|
+      if params[:file].present?
+        Employee.import(params[:file])
+        format.html { redirect_to root_path, notice: 'File successfuly uploaded.' }
+      else
+        format.html { redirect_to root_path, notice: 'Please add a file to be uploaded.' }
+      end
+    end
   end
 
   # POST /employees

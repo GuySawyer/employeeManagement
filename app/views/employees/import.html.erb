@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<% @employeeRowArrayDisp.each do |row| %>
+  <%= row %>
+<% end %>
+<h1>File has been uploaded.</h1>
+<%= link_to 'Back', employees_path %>
