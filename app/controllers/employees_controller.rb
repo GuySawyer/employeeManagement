@@ -28,8 +28,10 @@ class EmployeesController < ApplicationController
   def import
     respond_to do |format|
       if params[:file].present?
+        Department.import(params[:file])
         Employee.import(params[:file])
-        format.html { redirect_to root_path, notice: 'File successfuly uploaded.' }
+
+        format.html { redirect_to root_path, notice: 'File successfuly uploaded and records created.' }
       else
         format.html { redirect_to root_path, notice: 'Please add a file to be uploaded.' }
       end

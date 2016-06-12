@@ -26,8 +26,11 @@ ActiveRecord::Schema.define(version: 20160611102746) do
     t.string   "last_name"
     t.string   "email"
     t.string   "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "department_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  add_index "employees", ["department_id"], name: "index_employees_on_department_id"
 
 end

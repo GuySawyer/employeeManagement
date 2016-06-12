@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   
-  resources :departments
+  
   root 'employees#index'
 
   get 'employees/listall' => 'employees#listall', as: :listall
 
   resources :employees do
+    collection { post :import }
+  end
+
+  resources :departments do
     collection { post :import }
   end
 

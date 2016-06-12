@@ -5,7 +5,7 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :last_name
       t.string :email
       t.string :gender
-      t.references :department
+      t.belongs_to :department, index: true
       t.timestamps null: false
     end
   end
