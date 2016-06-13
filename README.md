@@ -52,3 +52,34 @@ JSON body structure. Ensure that your JSON data is structured as shown:
 	        }]
 }
 ```
+
+Additional Assessment Requirements:
+
+SQL Commands
+
+CREATE TABLES:
+
+Employee Table
+- CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "gender" varchar, "department_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)
+- CREATE  INDEX "index_employees_on_department_id" ON "employees" ("department_id")
+
+Department Table
+- CREATE TABLE "departments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "contact" varchar, "contact_email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)
+
+DELETE COMMANDS:
+
+Departments
+- SELECT "departments".* FROM "departments"
+- DELETE FROM "departments" WHERE "departments"."id" = ?  [["id", 1]] (Repeats for all departments in database)
+
+Employees
+- SELECT "employees".* FROM "employees"
+- DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 1]] (Repeats for all departments in database)
+
+INSERT COMMANDS:
+
+Departments
+- INSERT INTO "departments" ("name", "contact", "contact_email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "deptartment1"], ["contact", "contact_name1"], ["contact_email", "contact_email1"], ["created_at", "2016-06-13 20:49:18.288720"], ["updated_at", "2016-06-13 20:49:18.288720"]]
+
+Employees
+- INSERT INTO "employees" ("first_name", "last_name", "email", "gender", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "Name1"], ["last_name", "Surname1"], ["email", "email1"], ["gender", "m"], ["department_id", 3], ["created_at", "2016-06-13 20:49:18.296538"], ["updated_at", "2016-06-13 20:49:18.296538"]]
