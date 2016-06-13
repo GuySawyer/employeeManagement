@@ -22,6 +22,13 @@ Via file upload:
 3. Click upload
 4. login with User: "admin" Pass: "secret"
 
+The file must be of the format CSV, Without Headers, data structured as follows:
+```
+Name1,Surname1,email1@domain,m,department1,contact_name1,contact_email1@domain
+Name2,Surname2,email2@domain,m,department2,contact_name2,contact_email2@domain
+etc...
+```
+
 Via API (HTTP) using "Basic Auth" with credentials
 User: admin
 Pass: secret
