@@ -24,8 +24,8 @@ Via file upload:
 
 The file must be of the format CSV, Without Headers, data structured as follows:
 ```
-Name1,Surname1,email1@domain,m,department1,contact_name1,contact_email1@domain
-Name2,Surname2,email2@domain,m,department2,contact_name2,contact_email2@domain
+EmployeeName1,EmployeeSurname1,EmployeeEmail1@domain,Gender1,department,contact_name,contact_email@domain
+EmployeeName2,EmployeeSurname2,EmployeeEmail2@domain,Gender2,department,contact_name,contact_email@domain
 etc...
 ```
 
