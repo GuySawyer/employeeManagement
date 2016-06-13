@@ -16,11 +16,18 @@ class Employee < ActiveRecord::Base
 			Employee.create(first_name: first_name, last_name: last_name, email: email, gender: gender, department: dept)
 		end
 	end
+	def self.api_import(params)
+		Employee.destroy_all
+		params["employees"].each do |data|
+			dept = Department.find_by(name: data["department"])
+			Employee.create(first_name: data["first_name"], last_name: data["last_name"], email: data["email"], gender: data["gender"], department: dept)
+		end
+	end
 
 	private
 	def set_selected_department
 		if department_id && department_id != '0'
-		  self.department = Department.find(departmnet_id)
+		  self.department = Department.find(department_id)
 		end
 	end
 end

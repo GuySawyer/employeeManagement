@@ -1,10 +1,12 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  
+  USER, PASSWORD = 'admin', 'secret'
+  before_filter :authentication_check, :except => :index
 
   # GET /employees
   # GET /employees.json
   def index
-    
   end
 
   def listall
@@ -41,15 +43,15 @@ class EmployeesController < ApplicationController
   # POST /employees
   # POST /employees.json
   def create
-    @employee = Employee.new(employee_params)
-
     respond_to do |format|
-      if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render :show, status: :created, location: @employee }
+      if params.present?
+        Department.api_import(JSON.parse(request.raw_post))
+        Employee.api_import(JSON.parse(request.raw_post))
+        msg = { :status => "ok", :message => "Data successfully uploaded", :html => "<b>...</b>" }
+        format.json  { render :json => msg } # don't do msg.to_json
       else
-        format.html { render :new }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+        msg = { :status => "fail", :message => "No data received", :html => "View README at localhost:3000/readme" }
+        format.json  { render :json => msg } # don't do msg.to_json
       end
     end
   end
@@ -86,6 +88,15 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email, :gender)
+      params.require(:employee).permit(:first_name, :last_name, :email, :gender, :department, :department_contact, :contact_email)
+    end
+
+    private
+ 
+    private
+    def authentication_check
+     authenticate_or_request_with_http_basic do |user, password|
+      user == USER && password == PASSWORD
+     end
     end
 end
