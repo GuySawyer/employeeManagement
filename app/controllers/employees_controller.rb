@@ -50,7 +50,7 @@ class EmployeesController < ApplicationController
         msg = { :status => "ok", :message => "Data successfully uploaded", :html => "<b>...</b>" }
         format.json  { render :json => msg } # don't do msg.to_json
       else
-        msg = { :status => "fail", :message => "No data received", :html => "View README at localhost:3000/readme" }
+        msg = { :status => "fail", :message => "No data received", :html => "View README at https://github.com/GuySawyer/employeeManagement/blob/master/README.md" }
         format.json  { render :json => msg } # don't do msg.to_json
       end
     end
